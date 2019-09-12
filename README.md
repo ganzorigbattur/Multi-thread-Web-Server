@@ -12,6 +12,8 @@ To compile the program, simply type "make" in the directory containing the makef
   * dynamic_flag​ indicates whether the worker thread pool size should be static or dynamic. Bydefault, it should be 0.
   * qlen​ is the fixed, bounded length of the request queue
   * cache_entries​ is the number of entries available in the cache (an alternative way to do thiswould be to specify the maximum memory used by the cache, but we are just using a limit on thenumber of entries)
+  
+  You can try to download a file using this command: **wget http://127.0.0.1:9000/image/jpg/29.jpg** (Please note that 127.0.0.1 means localhost)
 
 # How it works
 Our server.c program works by checking to make sure that all arguments entered match the required criteria, then if correct, changes the current working directory to the specified path. Then the specified number of worker and dispatch threads are created to handle the requests. The dispatch threads connect to the client and take in the clients request, and adds it into the queue that we implemented. The worker threads then take the requests from the queue, check to see if the request being handled is in the cache, if not it reads the file requested from disk and the request is added to the cache. During the worker thread's process, the program records how long the process took, then the information from that worker thread and request are logged and printed to the terminal. To stop the server, type "^C" in the terminal where the server was started. 
