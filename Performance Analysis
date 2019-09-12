@@ -1,0 +1,13 @@
+# of Threads	Time
+1: 		21.832s
+2: 		17.000s
+5: 		15.425s
+10: 		15.907s
+20: 		15.587s
+50: 		15.578s
+75: 		14.172s
+100: 		16.571s
+
+As more threads are used to handle the requests the times get faster, up until a point where all resources in the computer are being used which results in traffic, increasing the time needed to complete the command. With our implementation without a dynamic thread pool, there are unused threads taking resources and waiting to enter the critical sections.
+
+When timing the worker threads in server.c we included the lock waiting time to see the difference as thread size increases, total wait time increases since a large number of threads are waiting.
