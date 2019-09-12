@@ -1,6 +1,6 @@
 # Multi-thread-Web-Server (Ganzorig Battur)
 
-HTTP web server implemented in C using multi-threads (pthread). It can transfer files between clients of the server using HTTP protocol. It should be able to transfer anyfiletype:HTML,GIF,JPEG,TXT,etc.
+HTTP web server implemented in C using multi-threads (pthread). It can transfer files between clients of the server using HTTP protocol. It should be able to transfer anyfiletype:HTML,GIF,JPEG,TXT,etc. First we dispatch threads will get all request for client and add into the custom queue. From the queue, worker thread will be polling and return response data into client using custom Least Frequently Used(LFU) CACHE.
 
 # How to use it
 To compile the program, simply type "make" in the directory containing the makefile and code. To run the program type **"./web_server <port> <path_to_testing>/testing <num_dispatch> <num_worker> <dynamic_flag> <queue_len> <cache_entries>"**
